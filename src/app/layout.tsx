@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import NextTopLoader from 'nextjs-toploader';
 import Navbar from '@/partials/app-partials/navbar';
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         <NextTopLoader />
         <Navbar />
         {children}
+        <Analytics />
       </body>
     </html>
   );
