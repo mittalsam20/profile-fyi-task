@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Label as UILabel } from '@/components/ui/label';
 
 const Label = (props: any) => {
