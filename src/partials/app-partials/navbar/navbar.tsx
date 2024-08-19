@@ -7,13 +7,21 @@ import Input from '@/components/dumb/input';
 import { Button } from '@/components/ui/button';
 import CartIcon from '@/components/svg/cart-icon';
 import SearchIcon from '@/components/svg/search-icon';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import ProfileFyiIcon from '@/components/svg/profile-fyi-icon';
 
 const Navbar = () => {
   const [searchText, setSearchText] = useState('');
+  const session = useSession();
+  const isUserLoggedIn = !!session.data;
 
-  const isUserLoggedIn = false;
-  const onClickLoginLogout = () => {};
+  const onClickLoginLogout = async () => {
+    if (isUserLoggedIn) {
+      signOut({ callbackUrl: '/' });
+      return;
+    }
+    signIn();
+  };
 
   const handleSearchBar = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
